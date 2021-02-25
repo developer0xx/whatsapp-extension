@@ -1,0 +1,40 @@
+{
+  "manifest_version": 2,
+  "name": "Whatsapp-bot",
+  "description": "Whatsapp Broadcast and Auto-reply",
+  "version": "1.0",
+  "permissions": [
+    "contextMenus",
+    "tabs",
+    "activeTab",
+    "storage",
+    "cookies",
+    "webRequest",
+    "webRequestBlocking",
+    "http://localhost/",
+    "http://*/*", "https://*/*"
+  ],
+  "background": {
+    "persistent": true,
+    "scripts": [
+      "js/jquery.js",
+      "js/background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "run_at": "document_idle",
+      "js": [
+        "js/jquery.js",
+        "js/content.js"
+      ],
+      "css": ["css/custom.css"]
+    }
+  ],
+  "browser_action": {
+    "default_title": "Whatsapp bot",
+    "default_popup": "index.html"
+  },
+  "content_security_policy": "script-src 'self'; object-src 'self'"
+}
